@@ -89,4 +89,8 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
+// jenkins plugin
+backend.add(import('@backstage-community/plugin-jenkins-backend'));
+backend.add(import('@backstage-community/plugin-scaffolder-backend-module-jenkins'));
+
 backend.start();

@@ -128,15 +128,3 @@ catalog:
 # catalogRefreshDelayInSec: 300
 
 # app-config.yaml
-proxy:
-  '/jenkins/api':
-    target: 'https://jenkins.localhost.dataplanes.pro/'
-    changeOrigin: true
-    headers:
-      Authorization: Basic ${JENKINS_BASIC_AUTH_HEADER}
-jenkins:
-  baseUrl: https://jenkins.localhost.dataplanes.pro/
-  username: devhub-bot
-  apiKey: ${JENKINS_BASIC_AUTH_HEADER}
-  jenkinsActionSecretEncryptionKey: ZGVtbzEyMw==
-  jenkinsActionJobAuthToken: BuildEARToken

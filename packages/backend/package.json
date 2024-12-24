@@ -15,6 +15,8 @@
     "clean": "backstage-cyarn li package clean"
   },
   "dependencies": {
+    "@backstage-community/plugin-jenkins-backend": "^0.8.0",
+    "@backstage-community/plugin-scaffolder-backend-module-jenkins": "^0.3.0",
     "@backstage/backend-app-api": "^0.8.0",
     "@backstage/backend-common": "^0.23.2",
     "@backstage/backend-defaults": "^0.3.3",

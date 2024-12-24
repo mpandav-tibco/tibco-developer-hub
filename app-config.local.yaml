@@ -54,3 +54,15 @@ auth:
   # # on local developer setups only github and guest auth providers are available
   # # Oauthproxy will only be available in Dataplane deployments.
   enableAuthProviders: [guest]
+proxy:
+  '/jenkins/api':
+    target: 'http://jenkins.localhost.dataplanes.pro/'
+    changeOrigin: true
+    headers:
+      Authorization: Basic 115a509b4b814db9e69321e192b22ed033
+jenkins:
+  baseUrl: https://jenkins.localhost.dataplanes.pro/
+  username: devhub-bot
+  apiKey: 115a509b4b814db9e69321e192b22ed033
+  jenkinsActionSecretEncryptionKey: ZGVtbzEyMw==
+  jenkinsActionJobAuthToken: tibco
