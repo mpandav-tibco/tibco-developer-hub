@@ -93,4 +93,7 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 backend.add(import('@backstage-community/plugin-jenkins-backend'));
 backend.add(import('@backstage-community/plugin-scaffolder-backend-module-jenkins'));
 
+// wsdl plugin
+backend.add(import('@dweber019/backstage-plugin-api-docs-module-wsdl-backend'));
+
 backend.start();
