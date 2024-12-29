@@ -96,4 +96,7 @@ backend.add(import('@backstage-community/plugin-scaffolder-backend-module-jenkin
 // wsdl plugin
 backend.add(import('@dweber019/backstage-plugin-api-docs-module-wsdl-backend'));
 
+// k8s plugin
+backend.add(import('@backstage/plugin-kubernetes-backend'));
+
 backend.start();
