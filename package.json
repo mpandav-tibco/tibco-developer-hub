@@ -70,5 +70,5 @@
     "@types/react-dom": "^18",
     "node-gyp": "^9.0.0"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "yarn@1.22.22"
 }

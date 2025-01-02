@@ -17,7 +17,7 @@ FROM node:18.20-alpine3.19 AS build
 RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
     --mount=type=cache,target=/var/lib/apk,sharing=locked \
     apk update && \
-    apk add python3 g++ make pkgconf pixman-dev cairo pango pango-dev cairo-dev jpeg-dev  giflib-dev && \
+    apk add --no-cache make python3 g++ pkgconf pixman-dev cairo pango pango-dev cairo-dev jpeg-dev giflib-dev make py3-pip py3-setuptools build-base gcc libffi-dev  openssl-dev brotli-dev c-ares-dev nghttp2-dev icu-dev zlib-dev  libuv-dev && \
     yarn config set python /usr/bin/python3
 
 USER node
