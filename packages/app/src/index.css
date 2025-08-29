@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/*
+ * Copyright (c) 2023-2025. Cloud Software Group, Inc. All Rights Reserved. Confidential & Proprietary
+ */
+
+@import '@fontsource/source-sans-pro';
 @import './themes/styles/button.css';
+@import './themes/styles/typography.css';
 body {
   /* You will need to configure the Source Sans Pro font */
   font-family: 'Source Sans Pro', 'PT Sans', Calibri, sans-serif;
@@ -8,6 +13,16 @@ body {
 }
 html {
   box-sizing: border-box;
+}
+.MuiPopover-root .MuiPopover-paper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #0e2d65 transparent transparent transparent;
 }
 *,
 *:before,

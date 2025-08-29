@@ -1,17 +1,5 @@
 /*
- * Copyright 2022 The Backstage Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2023-2025. Cloud Software Group, Inc. All Rights Reserved. Confidential & Proprietary
  */
 
 import React, { useCallback } from 'react';
@@ -34,6 +22,7 @@ import {
   EntityTagPicker,
   CatalogFilterLayout,
   UserListPicker,
+  EntityOwnerPicker,
 } from '@backstage/plugin-catalog-react';
 import {
   ScaffolderPageContextMenu,
@@ -68,7 +57,7 @@ export type TemplateListPageProps = {
 };
 
 const defaultGroup: TemplateGroupFilter = {
-  title: 'Templates',
+  title: 'Import Flows',
   filter: () => true,
 };
 
@@ -77,7 +66,7 @@ const createGroupsWithOther = (
 ): TemplateGroupFilter[] => [
   ...groups,
   {
-    title: 'Other Templates',
+    title: 'Other Import Flows',
     filter: e => ![...groups].some(({ filter }) => filter(e)),
   },
 ];
@@ -154,7 +143,7 @@ export const TemplateListPage = (props: TemplateListPageProps) => {
 
   return (
     <EntityListProvider>
-      <Page themeId="home">
+      <Page themeId="import-flow">
         <Header
           pageTitleOverride="Create a new component"
           title="Create a new component"
@@ -164,15 +153,13 @@ export const TemplateListPage = (props: TemplateListPageProps) => {
           <ScaffolderPageContextMenu {...scaffolderPageContextMenuProps} />
         </Header>
         <Content>
-          <ContentHeader title="Available Import Flows">
+          <ContentHeader>
             <RegisterExistingButton
               title="Register Existing Import Flow"
               to={registerComponentLink && registerComponentLink()}
             />
             <SupportButton>
-              Create new software components using standard templates. Different
-              templates create different kinds of components (services,
-              websites, documentation, ...).
+              Import new software components using import flows
             </SupportButton>
           </ContentHeader>
 
@@ -186,6 +173,7 @@ export const TemplateListPage = (props: TemplateListPageProps) => {
               />
               <TemplateCategoryPicker />
               <EntityTagPicker />
+              <EntityOwnerPicker />
             </CatalogFilterLayout.Filters>
             <CatalogFilterLayout.Content>
               <TemplateGroups

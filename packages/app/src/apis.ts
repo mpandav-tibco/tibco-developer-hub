@@ -1,9 +1,12 @@
+/*
+ * Copyright (c) 2023-2025. Cloud Software Group, Inc. All Rights Reserved. Confidential & Proprietary
+ */
+
 import {
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
   ScmAuth,
 } from '@backstage/integration-react';
-import { GithubAuth } from '@backstage/core-app-api';
 import {
   AnyApiFactory,
   configApiRef,
@@ -33,6 +36,7 @@ export const tibcoOIDCAuthApiRef: ApiRef<
 > = createApiRef({
   id: 'auth.tibco',
 });
+>>>>>>> upstream/main
 
 export const apis: AnyApiFactory[] = [
   createApiFactory({
@@ -63,39 +67,6 @@ export const apis: AnyApiFactory[] = [
     api: scmIntegrationsApiRef,
     deps: { configApi: configApiRef },
     factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
-  }),
-  createApiFactory({
-    api: tibcoOIDCAuthApiRef,
-    deps: {
-      discoveryApi: discoveryApiRef,
-      oauthRequestApi: oauthRequestApiRef,
-      configApi: configApiRef,
-    },
-    factory: ({ discoveryApi, oauthRequestApi, configApi }) =>
-      OAuth2.create({
-        discoveryApi,
-        oauthRequestApi,
-        provider: {
-          id: 'tibco',
-          title: 'TIBCO authentication provider',
-          icon: () => null,
-        },
-        environment: configApi.getOptionalString('auth.environment'),
-        defaultScopes: ['openid', 'profile', 'email'],
-      }),
-  }),
-  createApiFactory({
-    api: githubAuthApiRef,
-    deps: {
-      discoveryApi: discoveryApiRef,
-      oauthRequestApi: oauthRequestApiRef,
-    },
-    factory: ({ discoveryApi, oauthRequestApi }) =>
-      GithubAuth.create({
-        discoveryApi,
-        oauthRequestApi,
-        defaultScopes: ['read:user', 'read:org'],
-      }),
   }),
   ScmAuth.createDefaultApiFactory(),
 ];

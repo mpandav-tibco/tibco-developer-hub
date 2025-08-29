@@ -1,8 +1,8 @@
 # App config extensions
 
-This document describes TIBCO® Developer Hub custom extensions to the `app-config.yaml` schema.
+This document describes TIBCO® Developer Hub custom extensions to the `packages/app/app-config.yaml` schema.
 
-These are also described in the [`config.d.ts` file](../config.d.ts) with more details about each field.
+These are also described in the [`config.d.ts` file](../packages/app/config.d.ts) with more details about each field.
 
 ## Build Info
 
@@ -17,19 +17,43 @@ app:
   showBuildVersion: true
 ```
 
-The CI/CD pipeline automatically adds the build number to all docker images.
+## Developer Hub Version
 
-## Catalog Refresh Delay
+Show developer hub version. Displays currently deployed version the left bottom of the Home Page UI
 
-GitHub rate limits API requests to 5,000 per hour (or more for Enterprise accounts). The default catalog backend refreshes data every 100 seconds, which issues an API request for each discovered location.
-
-This means if you have more than ~140 catalog entities, you may get throttled by rate limiting. You can change the refresh rate of the catalog in by using the example config:
+Example config:
 
 ```yaml
-catalogRefreshDelayInSec: 300
+app:
+  developerHubVersion: '1.9.0'
 ```
 
-Allowed range is 100 to 900 milliseconds. Increase the rate limit to avoid throttling from GitHub API.
+## Doc Url
+
+Documentation url
+
+```yaml
+app:
+  docUrl: 'https://docs.tibco.com/go/platform-cp/1.9.0/doc/html#cshid=developer_hub_overview'
+```
+
+The CI/CD pipeline automatically adds the build number to all docker images.
+
+## Secondary Control Planes
+
+Configure multiple control planes
+
+Example config:
+
+```yaml
+secondaryControlPlanes:
+  - name: 'Control Plane 1'
+    url: 'https://<link to cp1>'
+    id: cp1
+  - name: 'Control Plane 2'
+    url: 'https://<link to cp2>'
+    id: cp2
+```
 
 ## Walk Through
 
@@ -49,6 +73,52 @@ walkThrough:
       tags: ['Tag1', 'Tag2']
       text: 'Some description'
       link: 'http://www.some-external-link.com/walk-through2'
+```
+
+## Template Groups
+
+Configuration for the template groups in template page when click on the Develop button
+
+Example config:
+
+```yaml
+templateGroups:
+  - name: templateGroup1
+    tagFilters: ['bwce', 'recommended']
+  - name: templateGroup2
+    tagFilters: ['flogo']
+```
+
+## Import Flow Groups
+
+Configuration for the import flow groups in import flow page when click on the Import Flow button
+
+Example config:
+
+```yaml
+importFlowGroups:
+  - name: importFlowGroup1
+    tagFilters: ['bwce', 'recommended']
+  - name: importFlowGroup2
+    tagFilters: ['flogo']
+```
+
+## Marketplace Groups
+
+Configuration for the marketplace groups in marketplace page when click on the Marketplace button
+
+Example config:
+
+```yaml
+marketplaceGroups:
+  - name: Documents
+    tagFilters: ['mp-document']
+  - name: Sample's
+    tagFilters: ['mp-sample']
+  - name: Templates
+    tagFilters: ['mp-template']
+  - name: Import Flows
+    tagFilters: ['mp-import-flow']
 ```
 
 ## Cp Link

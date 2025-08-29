@@ -1,8 +1,13 @@
+/*
+ * Copyright (c) 2023-2025. Cloud Software Group, Inc. All Rights Reserved. Confidential & Proprietary
+ */
+
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { CodeSnippet } from '@backstage/core-components';
+import { configApiRef, useApi } from '@backstage/core-plugin-api';
 
 const ENTITY_YAML = `metadata:
   name: example
@@ -15,12 +20,15 @@ const ENTITY_YAML = `metadata:
       dpId: demodpid1
       capabilityInstanceId: democapabilityInstanceid1
       appId: demoappid1
+      controlPlaneName: control plane1
+      controlPlaneUrl: https://<cp url>
     - appType: BWCE
       appName: BWCE-app1
       dataPlaneName: DP-prod
       dpId: demodpid2
       capabilityInstanceId: democapabilityInstanceid2
-      appId: demoappid2`;
+      appId: demoappid2
+      controlPlaneId: cp2`;
 
 /** @public */
 export type DeploymentsEmptyStateClassKey = 'code';
@@ -39,7 +47,8 @@ const useStyles = makeStyles(
 
 export function DeploymentsEmptyState() {
   const classes = useStyles();
-
+  const configApi = useApi(configApiRef);
+  const docUrl: string = configApi.get('app.docUrl');
   return (
     <>
       <Typography variant="body1">
@@ -52,16 +61,13 @@ export function DeploymentsEmptyState() {
           text={ENTITY_YAML}
           language="yaml"
           showLineNumbers
-          highlightedNumbers={[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]}
+          highlightedNumbers={[
+            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+          ]}
           customStyle={{ background: 'inherit', fontSize: '115%' }}
         />
       </div>
-      <Button
-        variant="contained"
-        color="primary"
-        target="_blank"
-        href="https://docs.tibco.com/go/platform-cp/1.3.0/doc/html#cshid=platform_app_deployment"
-      >
+      <Button variant="contained" color="primary" target="_blank" href={docUrl}>
         Read more
       </Button>
     </>

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023-2025. Cloud Software Group, Inc. All Rights Reserved. Confidential & Proprietary
+ */
+
 import { genPageTheme } from '@backstage/theme';
 
 import {
@@ -281,7 +285,7 @@ export const tibcoThemeLight = createUnifiedTheme({
             marginRight: 'unset',
             paddingRight: 'unset',
           },
-          backgroundColor: '#1774E5 !important',
+          backgroundColor: '#1774E5',
         },
       },
     },
