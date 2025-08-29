@@ -204,7 +204,7 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/jenkins" title="Jenkins">
       <EntityJenkinsContent />
     </EntityLayout.Route>
-    
+
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>

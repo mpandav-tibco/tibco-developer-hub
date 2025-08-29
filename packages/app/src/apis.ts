@@ -36,7 +36,6 @@ export const tibcoOIDCAuthApiRef: ApiRef<
 > = createApiRef({
   id: 'auth.tibco',
 });
->>>>>>> upstream/main
 
 export const apis: AnyApiFactory[] = [
   createApiFactory({
